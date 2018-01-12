@@ -14,9 +14,8 @@ namespace B4.EE.MV
 		public App ()
 		{
 			InitializeComponent();
-
-            //MainPage = new B4.EE.MV.MainPage();
-            MainPage = FreshPageModelResolver.ResolvePageModel<MainViewModel>();
+            
+            MainPage = new FreshNavigationContainer(FreshPageModelResolver.ResolvePageModel<MainViewModel>());
         }
 
         protected override void OnStart ()

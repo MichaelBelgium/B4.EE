@@ -148,11 +148,14 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="FreshMvvm">
+      <Version>2.2.3</Version>
+    </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>10.0.3</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="2.5.0.122203" />
-    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.0.1" />
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.0.6" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\B4.EE.MV\B4.EE.MV.csproj">
