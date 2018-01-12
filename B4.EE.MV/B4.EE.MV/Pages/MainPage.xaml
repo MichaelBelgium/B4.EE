@@ -4,8 +4,9 @@
              xmlns:local="clr-namespace:B4.EE.MV"
              x:Class="B4.EE.MV.Pages.MainPage">
 
-	<Label Text="Welcome to Xamarin.Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
+    <StackLayout>
+        <Entry Placeholder="City" />
+        <Button Text="Search" Command="{Binding GetRequest}"/>
+    </StackLayout>
 
 </ContentPage>
