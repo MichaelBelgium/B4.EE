@@ -1,4 +1,6 @@
-﻿using System;
+﻿using B4.EE.MV.ViewModels;
+using FreshMvvm;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,10 +15,11 @@ namespace B4.EE.MV
 		{
 			InitializeComponent();
 
-			MainPage = new B4.EE.MV.MainPage();
-		}
+            //MainPage = new B4.EE.MV.MainPage();
+            MainPage = FreshPageModelResolver.ResolvePageModel<MainViewModel>();
+        }
 
-		protected override void OnStart ()
+        protected override void OnStart ()
 		{
 			// Handle when your app starts
 		}
