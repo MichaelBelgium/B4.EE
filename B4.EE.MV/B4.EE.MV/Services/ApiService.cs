@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Newtonsoft.Json;
-using System.Threading.Tasks;
+﻿using B4.EE.MV.Models;
 using RestSharp;
-using B4.EE.MV.Models;
+using System.Net;
+using System.Threading.Tasks;
 
 namespace B4.EE.MV.Services
 {
@@ -19,18 +16,18 @@ namespace B4.EE.MV.Services
             client = new RestClient(API_URL);
         }
 
-        public WeatherApiResponse GetCityWeather(string city)
+        public async Task<WeatherApiResponse> GetCityWeather(string city)
         {
-            string json = string.Empty;
-            var request = new RestRequest("data/2.5/weather",Method.GET);
+            var request = new RestRequest("data/2.5/weather", Method.GET);
 
             request.AddParameter("q", city);
             request.AddParameter("APPID", API_KEY);
             request.AddParameter("units", "metric");
+            request.AddParameter("lang", "nl");
 
-            IRestResponse<WeatherApiResponse> response = client.Execute<WeatherApiResponse>(request);
-
-            return response.Data;
+            IRestResponse<WeatherApiResponse> response = await client.ExecuteTaskAsync<WeatherApiResponse>(request);
+                
+            return response.StatusCode == HttpStatusCode.OK ? response.Data : null;
         }
     }
 }

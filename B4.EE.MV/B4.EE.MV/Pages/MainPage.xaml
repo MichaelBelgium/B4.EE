@@ -5,7 +5,7 @@
              x:Class="B4.EE.MV.Pages.MainPage">
 
     <StackLayout>
-        <Entry Placeholder="City" />
+        <Entry Placeholder="City" Text="{Binding City}" />
         <Button Text="Search" Command="{Binding GetRequest}"/>
     </StackLayout>
 

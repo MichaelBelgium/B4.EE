@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Text;
-using System.Windows.Input;
-using B4.EE.MV.Services;
+﻿using B4.EE.MV.Services;
 using FreshMvvm;
+using System.ComponentModel;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace B4.EE.MV.ViewModels
 {
-    class MainViewModel: FreshBasePageModel
+    public class MainViewModel: FreshBasePageModel, INotifyPropertyChanged
     {
         private ApiService service;
 
@@ -18,8 +15,17 @@ namespace B4.EE.MV.ViewModels
             service = new ApiService();
         }
 
+        private string city;
+
+        public string City
+        {
+            get { return city; }
+            set { city = value; RaisePropertyChanged(nameof(City)); }
+        }
+
+
         public ICommand GetRequest => new Command(
-            () => service.GetCityWeather("Brugge")
+            async () => await service.GetCityWeather("Brugge")
         );
     }
 }
