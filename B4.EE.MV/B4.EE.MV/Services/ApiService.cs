@@ -19,9 +19,12 @@ namespace B4.EE.MV.Services
             client = new RestClient(API_URL);
         }
 
-        public async Task<WeatherApiResponse> GetCityWeather(string city)
+        public async Task<WeatherApiResponse> GetCityWeather(string city, string countryCode = null)
         {
             var request = new RestRequest("data/2.5/weather", Method.GET);
+
+            if (countryCode != null)
+                city = $"{city},{countryCode}";
 
             request.AddParameter("q", city);
             request.AddParameter("APPID", API_KEY);
@@ -68,6 +71,23 @@ namespace B4.EE.MV.Services
             request.AddParameter("lat", latitude);
 
             IRestResponse<WeatherApiResponse> response = await client.ExecuteTaskAsync<WeatherApiResponse>(request);
+
+            return response.StatusCode == HttpStatusCode.OK ? response.Data : null;
+        }
+
+        public async Task<ForecastApiResponse> GetForecast(string city, string countryCode = null)
+        {
+            var request = new RestRequest("data/2.5/forecast");
+
+            if (countryCode != null)
+                city = $"{city},{countryCode}";
+
+            request.AddParameter("q", city);
+            request.AddParameter("APPID", API_KEY);
+            request.AddParameter("units", "metric");
+            request.AddParameter("lang", "nl");
+
+            IRestResponse<ForecastApiResponse> response = await client.ExecuteTaskAsync<ForecastApiResponse>(request);
 
             return response.StatusCode == HttpStatusCode.OK ? response.Data : null;
         }

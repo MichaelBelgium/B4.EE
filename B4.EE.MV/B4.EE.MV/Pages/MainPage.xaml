@@ -8,6 +8,7 @@
         <Entry Placeholder="City" Text="{Binding City}" />
         <Button Text="Search" Command="{Binding GetRequest}"/>
         <Button Text="Search gps" Command="{Binding GetRequestGps}" />
+        <Button Text="Forecast" Command="{Binding GetRequestForecast}" />
     </StackLayout>
 
 </ContentPage>

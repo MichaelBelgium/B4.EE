@@ -29,11 +29,11 @@ namespace B4.EE.MV.Models
         /// <summary>
         /// Wind speed
         /// </summary>
-        public byte Speed { get; set; }
+        public double Speed { get; set; }
         /// <summary>
         /// Wind direction (degrees)
         /// </summary>
-        public byte Deg { get; set; }
+        public double Deg { get; set; }
     }
 
     public class Details
