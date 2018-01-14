@@ -9,6 +9,7 @@
         <Button Text="Search" Command="{Binding GetRequest}"/>
         <Button Text="Search gps" Command="{Binding GetRequestGps}" />
         <Button Text="Forecast" Command="{Binding GetRequestForecast}" />
+        <Button Text="Forecast gps" Command="{Binding GetRequestForecastGps}" />
     </StackLayout>
 
 </ContentPage>

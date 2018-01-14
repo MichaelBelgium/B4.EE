@@ -91,5 +91,44 @@ namespace B4.EE.MV.Services
 
             return response.StatusCode == HttpStatusCode.OK ? response.Data : null;
         }
+
+        private async Task<ForecastApiResponse> GetForecast(double longitude, double latitude)
+        {
+            var request = new RestRequest("data/2.5/forecast");
+
+            request.AddParameter("APPID", API_KEY);
+            request.AddParameter("units", "metric");
+            request.AddParameter("lang", "nl");
+            request.AddParameter("lon", longitude);
+            request.AddParameter("lat", latitude);
+
+            IRestResponse<ForecastApiResponse> response = await client.ExecuteTaskAsync<ForecastApiResponse>(request);
+
+            return response.StatusCode == HttpStatusCode.OK ? response.Data : null;
+        }
+
+        public async Task<ForecastApiResponse> GetForecastGps()
+        {
+            var locator = CrossGeolocator.Current;
+            locator.DesiredAccuracy = 100;
+
+            if (!locator.IsGeolocationAvailable || !locator.IsGeolocationEnabled)
+            {
+                return null;
+            }
+
+            try
+            {
+                var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(1000), null, true);
+
+                return await GetForecast(position.Longitude, position.Latitude);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+
+            return null;
+        }
     }
 }

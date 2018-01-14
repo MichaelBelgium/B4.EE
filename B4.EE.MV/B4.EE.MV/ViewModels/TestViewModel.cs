@@ -35,5 +35,9 @@ namespace B4.EE.MV.ViewModels
         public ICommand GetRequestForecast => new Command(
             async () => await service.GetForecast("Brugge")
         );
+
+        public ICommand GetRequestForecastGps => new Command(
+            async () => await service.GetForecastGps()    
+        );
     }
 }
