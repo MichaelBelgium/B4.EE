@@ -29,21 +29,26 @@ namespace B4.EE.MV.ViewModels
         }
 
 
-        public ICommand AddCity => new Command(
-            async () =>
+        public ICommand AddCity => new Command(async () => {
+            if (string.IsNullOrEmpty(City))
             {
-                if (string.IsNullOrEmpty(City))
-                {
-                    ErrorMessage = "Enter a city";
-                    return;
-                }
-                
-                var tmp = await service.GetCityWeather(City);
-                if (tmp == null)
-                    ErrorMessage = "City not found";
-                else
-                    await CoreMethods.PopPageModel(tmp);
+                ErrorMessage = "Enter a city";
+                return;
             }
-        );
+
+            var tmp = await service.GetCityWeather(City);
+            if (tmp == null)
+                ErrorMessage = "City not found";
+            else
+                await CoreMethods.PopPageModel(tmp);
+        });
+
+        public ICommand AddGps => new Command(async () => {
+            var tmp = await service.GetCityWeatherGps();
+            if (tmp == null)
+                ErrorMessage = "An error has occured. Try later again.";
+            else
+                await CoreMethods.PopPageModel(tmp);
+        });
     }
 }

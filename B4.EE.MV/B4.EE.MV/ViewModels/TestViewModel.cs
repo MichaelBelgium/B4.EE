@@ -6,7 +6,7 @@ using Xamarin.Forms;
 
 namespace B4.EE.MV.ViewModels
 {
-    public class TestViewModel: FreshBasePageModel, INotifyPropertyChanged
+    public class TestViewModel: FreshBasePageModel
     {
         private ApiService service;
 
@@ -25,7 +25,7 @@ namespace B4.EE.MV.ViewModels
 
 
         public ICommand GetRequest => new Command(
-            async () => await service.GetCityWeather("Brugge")
+            async () => await service.GetCityWeather(City)
         );
 
         public ICommand GetRequestGps => new Command(
@@ -33,7 +33,7 @@ namespace B4.EE.MV.ViewModels
         );
 
         public ICommand GetRequestForecast => new Command(
-            async () => await service.GetForecast("Brugge")
+            async () => await service.GetForecast(City)
         );
 
         public ICommand GetRequestForecastGps => new Command(
