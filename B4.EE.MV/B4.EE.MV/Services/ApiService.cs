@@ -26,10 +26,8 @@ namespace B4.EE.MV.Services
             if (countryCode != null)
                 city = $"{city},{countryCode}";
 
+            AddCommonParameters(request);
             request.AddParameter("q", city);
-            request.AddParameter("APPID", API_KEY);
-            request.AddParameter("units", "metric");
-            request.AddParameter("lang", "nl");
 
             IRestResponse<WeatherApiResponse> response = await client.ExecuteTaskAsync<WeatherApiResponse>(request);
                 
@@ -64,9 +62,7 @@ namespace B4.EE.MV.Services
         {
             var request = new RestRequest("data/2.5/weather", Method.GET);
 
-            request.AddParameter("APPID", API_KEY);
-            request.AddParameter("units", "metric");
-            request.AddParameter("lang", "nl");
+            AddCommonParameters(request);
             request.AddParameter("lon", longitude);
             request.AddParameter("lat", latitude);
 
@@ -82,10 +78,8 @@ namespace B4.EE.MV.Services
             if (countryCode != null)
                 city = $"{city},{countryCode}";
 
+            AddCommonParameters(request);
             request.AddParameter("q", city);
-            request.AddParameter("APPID", API_KEY);
-            request.AddParameter("units", "metric");
-            request.AddParameter("lang", "nl");
 
             IRestResponse<ForecastApiResponse> response = await client.ExecuteTaskAsync<ForecastApiResponse>(request);
 
@@ -96,9 +90,7 @@ namespace B4.EE.MV.Services
         {
             var request = new RestRequest("data/2.5/forecast");
 
-            request.AddParameter("APPID", API_KEY);
-            request.AddParameter("units", "metric");
-            request.AddParameter("lang", "nl");
+            AddCommonParameters(request);
             request.AddParameter("lon", longitude);
             request.AddParameter("lat", latitude);
 
@@ -129,6 +121,13 @@ namespace B4.EE.MV.Services
             }
 
             return null;
+        }
+
+        private void AddCommonParameters(IRestRequest request)
+        {
+            request.AddParameter("APPID", API_KEY);
+            request.AddParameter("units", "metric");
+            request.AddParameter("lang", "nl");
         }
     }
 }
