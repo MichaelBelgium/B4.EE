@@ -6,11 +6,11 @@ using Xamarin.Forms;
 
 namespace B4.EE.MV.ViewModels
 {
-    public class MainViewModel: FreshBasePageModel, INotifyPropertyChanged
+    public class TestViewModel: FreshBasePageModel, INotifyPropertyChanged
     {
         private ApiService service;
 
-        public MainViewModel()
+        public TestViewModel()
         {
             service = new ApiService();
         }

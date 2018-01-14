@@ -14,8 +14,11 @@ namespace B4.EE.MV
 		public App ()
 		{
 			InitializeComponent();
-            
-            MainPage = new FreshNavigationContainer(FreshPageModelResolver.ResolvePageModel<MainViewModel>());
+
+            var tabbedPage = new FreshTabbedNavigationContainer();
+            tabbedPage.AddTab<HomeViewModel>("Home", null);
+            tabbedPage.AddTab<TestViewModel>("Test", null);
+            MainPage = tabbedPage;
         }
 
         protected override void OnStart ()
