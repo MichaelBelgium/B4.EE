@@ -16,7 +16,7 @@ namespace B4.EE.MV
 			InitializeComponent();
 
             var tabbedPage = new FreshTabbedNavigationContainer();
-            tabbedPage.AddTab<HomeViewModel>("Home", null);
+            tabbedPage.AddTab<FavoritesViewModel>("Favorites", "star_o.png");
             tabbedPage.AddTab<TestViewModel>("Test", null);
             MainPage = tabbedPage;
         }

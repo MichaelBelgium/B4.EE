@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace B4.EE.MV.Pages
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class HomePage : ContentPage
+	public partial class FavoritesPage : ContentPage
 	{
-		public HomePage ()
+		public FavoritesPage()
 		{
 			InitializeComponent ();
 		}
