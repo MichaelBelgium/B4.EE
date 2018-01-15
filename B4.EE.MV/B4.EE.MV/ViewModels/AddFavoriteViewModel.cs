@@ -28,7 +28,6 @@ namespace B4.EE.MV.ViewModels
             set { city = value; RaisePropertyChanged(nameof(City)); }
         }
 
-
         public ICommand AddCity => new Command(async () => {
             if (string.IsNullOrEmpty(City))
             {

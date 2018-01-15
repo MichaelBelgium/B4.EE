@@ -7,6 +7,7 @@ namespace B4.EE.MV.Models
 {
     public class WeatherApiResponse
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public Position Coord { get; set; }
         public Wind Wind { get; set; }
