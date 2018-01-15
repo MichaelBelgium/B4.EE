@@ -8,7 +8,7 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <ListView />
+            <ListView ItemsSource="{Binding LocationList}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
