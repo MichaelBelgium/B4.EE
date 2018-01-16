@@ -5,11 +5,10 @@
              x:Class="B4.EE.MV.Pages.FavoritesPage">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Command="{Binding AddFav}" />
-        <ToolbarItem Text="Refresh" Command="{Binding Refresh}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <ListView ItemsSource="{Binding LocationList}">
+            <ListView ItemsSource="{Binding LocationList}" IsPullToRefreshEnabled="True" RefreshCommand="{Binding Refresh}" IsRefreshing="{Binding IsRefreshing}">
                 <ListView.Behaviors>
                     <bhv:EventToCommandBehavior 
                         EventName="ItemTapped"

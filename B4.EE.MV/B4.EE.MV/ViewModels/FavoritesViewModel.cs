@@ -11,6 +11,7 @@ namespace B4.EE.MV.ViewModels
 {
     public class FavoritesViewModel: FreshBasePageModel
     {
+        private bool isRefreshing;
         private DatabaseService dbService;
         private ObservableCollection<Location> locationList;
         
@@ -23,9 +24,11 @@ namespace B4.EE.MV.ViewModels
             async () => await CoreMethods.PushPageModel<AddFavoriteViewModel>()
         );
 
-        public ICommand Refresh => new Command(
-            () => LocationList = new ObservableCollection<Location>(dbService.GetLocations())
-        );
+        public ICommand Refresh => new Command(() => {
+            IsRefreshing = true;
+            LocationList = new ObservableCollection<Location>(dbService.GetLocations());
+            IsRefreshing = false;
+        });
 
         public ICommand SelectNew => new Command<ItemTappedEventArgs>(
             (ItemTappedEventArgs args) => {
@@ -37,6 +40,12 @@ namespace B4.EE.MV.ViewModels
         {
             get { return locationList; }
             set { locationList = value; RaisePropertyChanged(nameof(LocationList)); }
+        }
+
+        public bool IsRefreshing
+        {
+            get { return isRefreshing; }
+            set { isRefreshing = value; RaisePropertyChanged(nameof(IsRefreshing)); }
         }
 
         public override void ReverseInit(object returnedData)
