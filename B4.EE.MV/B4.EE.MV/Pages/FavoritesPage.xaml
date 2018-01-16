@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:bhv="clr-namespace:B4.EE.MV.Services.Behaviours"
+             x:Name="FavoritesPage"
              x:Class="B4.EE.MV.Pages.FavoritesPage">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Command="{Binding AddFav}" />
@@ -18,7 +19,14 @@
                 </ListView.Behaviors>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding Name}" />
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Command="{Binding Path=BindingContext.RemoveFavorite, Source={x:Reference FavoritesPage}}" CommandParameter="{Binding .}" Text="Delete" />
+                            </ViewCell.ContextActions>
+                            <StackLayout>
+                                <Label Text="{Binding Name}" />
+                            </StackLayout>
+                        </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

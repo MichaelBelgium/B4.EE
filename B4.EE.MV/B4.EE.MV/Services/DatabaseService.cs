@@ -36,6 +36,19 @@ namespace B4.EE.MV.Services
             return locations.First(l => l.Selected);
         }
 
+        public void RemoveLocation(int apiId)
+        {
+            if (locations.Count == 1)
+                throw new Exception("The app needs minimum 1 location.");
+
+            locations.Remove(locations.First(l => l.ApiId == apiId));
+        }
+
+        public void RemoveLocation(Location location)
+        {
+            RemoveLocation(location.ApiId);
+        }
+
         public void SetSelectedLocation(Location location)
         {
             locations.ForEach(l => l.Selected = false);

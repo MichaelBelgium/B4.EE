@@ -36,6 +36,20 @@ namespace B4.EE.MV.ViewModels
             }
         );
 
+        public ICommand RemoveFavorite => new Command<Location>(
+            async (Location location) => {
+                try
+                {
+                    dbService.RemoveLocation(location);
+                    Refresh.Execute(null);
+                }
+                catch(Exception ex)
+                {
+                    await CoreMethods.DisplayAlert("Error", ex.Message, "Ok");
+                }
+            }
+        );
+
         public ObservableCollection<Location> LocationList
         {
             get { return locationList; }
