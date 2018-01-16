@@ -5,7 +5,7 @@ using System.Text;
 
 namespace B4.EE.MV.ViewModels
 {
-    class ForecastModel: FreshBasePageModel
+    class ForecastViewModel: FreshBasePageModel
     {
 
     }

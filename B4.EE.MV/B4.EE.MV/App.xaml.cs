@@ -1,15 +1,11 @@
 ﻿using B4.EE.MV.ViewModels;
 using FreshMvvm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 using Xamarin.Forms;
 
 namespace B4.EE.MV
 {
-	public partial class App : Application
+    public partial class App : Application
 	{
 		public App ()
 		{
@@ -17,7 +13,9 @@ namespace B4.EE.MV
 
             var tabbedPage = new FreshTabbedNavigationContainer();
             tabbedPage.AddTab<FavoritesViewModel>("Favorites", "star_o.png");
-            tabbedPage.AddTab<TestViewModel>("Test", null);
+            tabbedPage.AddTab<WeatherViewModel>("Weather", "crosshair.png");
+            tabbedPage.AddTab<ForecastViewModel>("Forecast", "cloud.png");
+            //tabbedPage.AddTab<TestViewModel>("Test", null);
             MainPage = tabbedPage;
         }
 
