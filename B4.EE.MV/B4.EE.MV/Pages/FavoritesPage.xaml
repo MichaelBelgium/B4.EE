@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:bhv="clr-namespace:B4.EE.MV.Services.Behaviours"
              x:Class="B4.EE.MV.Pages.FavoritesPage">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Command="{Binding AddFav}" />
@@ -9,6 +10,13 @@
     <ContentPage.Content>
         <StackLayout>
             <ListView ItemsSource="{Binding LocationList}">
+                <ListView.Behaviors>
+                    <bhv:EventToCommandBehavior 
+                        EventName="ItemTapped"
+                        Command="{Binding SelectNew}"
+                        CommandParameter="{Binding .}"
+                    />
+                </ListView.Behaviors>
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextCell Text="{Binding Name}" />

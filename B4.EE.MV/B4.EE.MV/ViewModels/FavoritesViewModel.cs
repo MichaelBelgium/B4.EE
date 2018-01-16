@@ -27,6 +27,12 @@ namespace B4.EE.MV.ViewModels
             () => LocationList = new ObservableCollection<Location>(dbService.GetLocations())
         );
 
+        public ICommand SelectNew => new Command<ItemTappedEventArgs>(
+            (ItemTappedEventArgs args) => {
+                dbService.SetSelectedLocation(args.Item as Location);
+            }
+        );
+
         public ObservableCollection<Location> LocationList
         {
             get { return locationList; }

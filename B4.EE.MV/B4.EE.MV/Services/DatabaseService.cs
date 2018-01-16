@@ -23,7 +23,7 @@ namespace B4.EE.MV.Services
                 }
             };
 
-            Settings.SelectedLocation = locations[0];
+            SetSelectedLocation(locations[0]);
         }
 
         public List<Location> GetLocations()
@@ -34,6 +34,13 @@ namespace B4.EE.MV.Services
         public Location GetSelectedLocation()
         {
             return locations.First(l => l.Selected);
+        }
+
+        public void SetSelectedLocation(Location location)
+        {
+            locations.ForEach(l => l.Selected = false);
+            locations.First(l => l.ApiId == location.ApiId).Selected = true;
+            Settings.SelectedLocation = location;
         }
 
         public void AddLocation(int id, string city)
