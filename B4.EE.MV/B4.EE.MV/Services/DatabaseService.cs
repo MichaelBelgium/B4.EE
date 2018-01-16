@@ -22,11 +22,18 @@ namespace B4.EE.MV.Services
                     Selected = true
                 }
             };
+
+            Settings.SelectedLocation = locations[0];
         }
 
         public List<Location> GetLocations()
         {
             return locations;
+        }
+
+        public Location GetSelectedLocation()
+        {
+            return locations.First(l => l.Selected);
         }
 
         public void AddLocation(int id, string city)
