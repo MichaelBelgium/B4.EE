@@ -5,7 +5,7 @@
     <ContentPage.Content>
         <StackLayout>
             <Entry Placeholder="City" Text="{Binding City}" />
-            <Label Text="{Binding ErrorMessage}" />
+            <Label Text="{Binding ErrorMessage}" TextColor="Red" />
             <Button Text="Add city" Command="{Binding AddCity}"/>
             <Button Text="Add current position"  Command="{Binding AddGps}" />
         </StackLayout>
