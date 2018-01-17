@@ -28,5 +28,10 @@ namespace B4.EE.MV.ViewModels
             get { return currentResponse; }
             set { currentResponse = value; RaisePropertyChanged(nameof(CurrentResponse)); }
         }
+
+        protected override void ViewIsAppearing(object sender, EventArgs e)
+        {
+            Refresh.Execute(null);
+        }
     }
 }
