@@ -4,9 +4,7 @@
              x:Class="B4.EE.MV.Pages.WeatherPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="{Binding CurrentResponse.Name}"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label Text="{Binding CurrentResponse.Name}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
