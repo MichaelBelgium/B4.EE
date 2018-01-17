@@ -24,6 +24,8 @@ namespace B4.EE.MV.Services
                 conn.Insert(new Location { ApiId = 2800931, Name = "Bruges", Selected = true });
             
             SetSelectedLocation(GetSelectedLocation());
+
+            Settings.Unit = Settings.UNIT_METRIC;
         }
 
         public List<Location> GetLocations()

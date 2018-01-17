@@ -6,8 +6,11 @@ namespace B4.EE.MV.Models.Database
 {
     class Settings
     {
-        public enum Units  { Metric, Standard, Imperial }
+        public const string UNIT_METRIC = "metric";
+        public const string UNIT_STANDARD = "standard";
+        public const string UNIT_IMPERIAL = "imperial";
+
         public static Location SelectedLocation { get; set; }
-        public static Units Unit { get; set; }
+        public static string Unit { get; set; }
     }
 }

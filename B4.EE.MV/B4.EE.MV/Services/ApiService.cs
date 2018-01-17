@@ -1,4 +1,5 @@
 ﻿using B4.EE.MV.Models;
+using B4.EE.MV.Models.Database;
 using Plugin.Geolocator;
 using RestSharp;
 using System;
@@ -126,7 +127,7 @@ namespace B4.EE.MV.Services
         private void AddCommonParameters(IRestRequest request)
         {
             request.AddParameter("APPID", API_KEY);
-            request.AddParameter("units", "metric");
+            request.AddParameter("units", Settings.Unit);
             request.AddParameter("lang", "nl");
         }
     }
