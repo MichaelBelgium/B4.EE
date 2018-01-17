@@ -50,6 +50,10 @@ namespace B4.EE.MV.ViewModels
             }
         );
 
+        public ICommand ShowSettings => new Command(
+            async () => await CoreMethods.PushPageModel<SettingsViewModel>()
+        );
+
         public ObservableCollection<Location> LocationList
         {
             get { return locationList; }

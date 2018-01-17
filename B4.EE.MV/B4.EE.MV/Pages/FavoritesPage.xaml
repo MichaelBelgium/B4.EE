@@ -6,6 +6,7 @@
              x:Class="B4.EE.MV.Pages.FavoritesPage">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Command="{Binding AddFav}" />
+        <ToolbarItem Text="Settings" Command="{Binding ShowSettings}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
