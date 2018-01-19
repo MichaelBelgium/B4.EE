@@ -6,29 +6,29 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <Label Text="ID:" FontSize="Medium" FontAttributes="Bold" />
+                <Label Text="ID:" Style="{StaticResource title}" />
                 <Label Text="{Binding CurrentResponse.Id}" />
 
-                <Label Text="Location:" FontSize="Medium" FontAttributes="Bold" />
+                <Label Text="Location:" Style="{StaticResource title}" />
                 <Label Text="{Binding CurrentResponse.Name}" />
 
-                <Label Text="Last updated:" FontSize="Medium" FontAttributes="Bold" />
+                <Label Text="Last updated:" Style="{StaticResource title}" />
                 <Label Text="{Binding CurrentResponse.Dt}" />
 
-                <Label Text="Wind speed and degrees:" FontSize="Medium" FontAttributes="Bold" />
+                <Label Text="Wind speed and degrees:" Style="{StaticResource title}" />
                 <Label Text="{Binding CurrentResponse.Wind.Speed}" />
                 <Label Text="{Binding CurrentResponse.Wind.Deg}" />
 
-                <Label Text="Country code:" FontSize="Medium" FontAttributes="Bold" />
+                <Label Text="Country code:" Style="{StaticResource title}" />
                 <Label Text="{Binding CurrentResponse.Sys.Country}" />
 
-                <Label Text="Sunrize:" FontSize="Medium" FontAttributes="Bold" />
+                <Label Text="Sunrize:" Style="{StaticResource title}" />
                 <Label Text="{Binding CurrentResponse.Sys.Sunrise}" />
 
-                <Label Text="Clouds (percentage): " FontSize="Medium" FontAttributes="Bold" />
+                <Label Text="Clouds (percentage): " Style="{StaticResource title}" />
                 <Label Text="{Binding CurrentResponse.Clouds.All}" />
 
-                <Label Text="Weather:" FontSize="Medium" FontAttributes="Bold" />
+                <Label Text="Weather:" Style="{StaticResource title}" />
                 <ListView ItemsSource="{Binding CurrentResponse.Weather}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -43,19 +43,19 @@
                     </ListView.ItemTemplate>
                 </ListView>
 
-                <Label Text="Current temperature:" FontSize="Medium" FontAttributes="Bold"/>
+                <Label Text="Current temperature:" Style="{StaticResource title}"/>
                 <Label Text="{Binding CurrentResponse.Main.Temp}" />
 
-                <Label Text="Current atmospheric pressure (hPa):" FontSize="Medium" FontAttributes="Bold" />
+                <Label Text="Current atmospheric pressure (hPa):" Style="{StaticResource title}" />
                 <Label Text="{Binding CurrentResponse.Main.Pressure}" />
 
-                <Label Text="Current humidity %:" FontSize="Medium" FontAttributes="Bold"/>
+                <Label Text="Current humidity %:" Style="{StaticResource title}"/>
                 <Label Text="{Binding CurrentResponse.Main.Humidity}" />
 
-                <Label Text="Minimum temperature:" FontSize="Medium" FontAttributes="Bold"/>
+                <Label Text="Minimum temperature:" Style="{StaticResource title}"/>
                 <Label Text="{Binding CurrentResponse.Main.Temp_min}" />
 
-                <Label Text="Maximum temperature:" FontSize="Medium" FontAttributes="Bold"/>
+                <Label Text="Maximum temperature:" Style="{StaticResource title}"/>
                 <Label Text="{Binding CurrentResponse.Main.Temp_max}" />
             </StackLayout>
         </ScrollView>
