@@ -1,5 +1,6 @@
 ﻿using B4.EE.MV.Models.Database;
 using FreshMvvm;
+using System;
 using System.Collections.Generic;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -23,7 +24,12 @@ namespace B4.EE.MV.ViewModels
         public string SelectedUnit
         {
             get { return selectedUnit; }
-            set { selectedUnit = value; }
+            set { selectedUnit = value; RaisePropertyChanged(nameof(SelectedUnit)); }
+        }
+
+        protected override void ViewIsAppearing(object sender, EventArgs e)
+        {
+            SelectedUnit = Settings.Unit;
         }
     }
 }
