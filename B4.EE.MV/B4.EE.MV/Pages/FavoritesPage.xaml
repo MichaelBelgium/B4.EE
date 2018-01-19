@@ -8,7 +8,7 @@
         <ToolbarItem Text="Settings" Command="{Binding ShowSettings}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Padding="5,0,0,0">
             <ListView ItemsSource="{Binding LocationList}" IsPullToRefreshEnabled="True" RefreshCommand="{Binding Refresh}" IsRefreshing="{Binding IsRefreshing}" SelectedItem="{Binding SelectedLocation, Mode=TwoWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
