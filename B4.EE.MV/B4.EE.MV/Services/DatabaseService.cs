@@ -25,7 +25,7 @@ namespace B4.EE.MV.Services
             
             SetSelectedLocation(GetSelectedLocation());
 
-            Settings.Unit = Settings.UNIT_METRIC;
+            Settings.Unit = Settings.UNIT_METRIC;   
         }
 
         public List<Location> GetLocations()

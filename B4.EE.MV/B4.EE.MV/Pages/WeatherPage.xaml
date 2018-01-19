@@ -29,19 +29,10 @@
                 <Label Text="{Binding CurrentResponse.Clouds.All}" />
 
                 <Label Text="Weather:" Style="{StaticResource title}" />
-                <ListView ItemsSource="{Binding CurrentResponse.Weather}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout>
-                                    <Label Text="{Binding Main}" />
-                                    <Label Text="{Binding Description}" />
-                                    <Image Source="{Binding ImageSource}" />
-                                </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+
+                <Label Text="{Binding CurrentResponse.Weather[0].Main}" />
+                <Label Text="{Binding CurrentResponse.Weather[0].Description}" />
+                <Image Source="{Binding CurrentResponse.Weather[0].ImageSource}"  Aspect="AspectFit" HorizontalOptions="EndAndExpand" />
 
                 <Label Text="Current temperature:" Style="{StaticResource title}"/>
                 <Label Text="{Binding CurrentResponse.Main.Temp}" />

@@ -4,9 +4,31 @@
              x:Class="B4.EE.MV.Pages.ForecastPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="ForecastPage"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label Text="Location:" Style="{StaticResource title}"/>
+            <Label Text="{Binding CurrentResponse.City.Name}" />
+
+            <Label Text="Country:" Style="{StaticResource title}" />
+            <Label Text="{Binding CurrentResponse.City.Country}" />
+
+            <Label Text="Forecast per 3 hours:" Style="{StaticResource title}"/>
+            <ListView ItemsSource="{Binding CurrentResponse.List}" RowHeight="200">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding Dt_txt}" />
+
+                                <Label Text="Temperature:" Style="{StaticResource title}"/>
+                                <Label Text="{Binding Main.Temp}"/>
+
+                                <Label Text="Weather:" Style="{StaticResource title}"/>
+                                <Label Text="{Binding Weather[0].Description}"/>
+                                <Image Source="{Binding Weather[0].ImageSource}" HeightRequest="50" WidthRequest="50" HorizontalOptions="Start"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

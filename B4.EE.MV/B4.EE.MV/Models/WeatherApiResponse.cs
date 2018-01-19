@@ -15,7 +15,6 @@ namespace B4.EE.MV.Models
         public List<Weather> Weather { get; set; }
         public DateTime Dt { get; set; }
         public Temperature Main { get; set; }
-
     }
 
     public class Position
