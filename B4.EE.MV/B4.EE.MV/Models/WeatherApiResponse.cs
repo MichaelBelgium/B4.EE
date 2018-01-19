@@ -1,7 +1,6 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using Xamarin.Forms;
 
 namespace B4.EE.MV.Models
 {
@@ -66,7 +65,7 @@ namespace B4.EE.MV.Models
         /// </summary>
         public string Icon { get; set; }
 
-        public string IconImage => $"http://openweathermap.org/img/w/{Icon}.png";
+        public ImageSource ImageSource => ImageSource.FromUri(new Uri($"http://openweathermap.org/img/w/{Icon}.png"));
     }
 
     public class Temperature
