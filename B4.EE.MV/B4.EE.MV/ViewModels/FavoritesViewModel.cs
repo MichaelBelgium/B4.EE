@@ -14,6 +14,7 @@ namespace B4.EE.MV.ViewModels
         private bool isRefreshing;
         private DatabaseService dbService;
         private ObservableCollection<Location> locationList;
+        private Location selectedLocation;
         
         public override void Init(object initData)
         {
@@ -29,12 +30,6 @@ namespace B4.EE.MV.ViewModels
             LocationList = new ObservableCollection<Location>(dbService.GetLocations());
             IsRefreshing = false;
         });
-
-        public ICommand SelectNew => new Command<ItemTappedEventArgs>(
-            (ItemTappedEventArgs args) => {
-                dbService.SetSelectedLocation(args.Item as Location);
-            }
-        );
 
         public ICommand RemoveFavorite => new Command<Location>(
             async (Location location) => {
@@ -58,6 +53,17 @@ namespace B4.EE.MV.ViewModels
         {
             get { return locationList; }
             set { locationList = value; RaisePropertyChanged(nameof(LocationList)); }
+        }
+
+        public Location SelectedLocation
+        {
+            get { return selectedLocation; }
+            set
+            {
+                selectedLocation = value;
+                RaisePropertyChanged(nameof(SelectedLocation));
+                dbService.SetSelectedLocation(SelectedLocation);
+            }
         }
 
         public bool IsRefreshing

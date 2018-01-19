@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:bhv="clr-namespace:B4.EE.MV.Services.Behaviours"
              x:Name="FavoritesPage"
              x:Class="B4.EE.MV.Pages.FavoritesPage">
     <ContentPage.ToolbarItems>
@@ -10,14 +9,7 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <ListView ItemsSource="{Binding LocationList}" IsPullToRefreshEnabled="True" RefreshCommand="{Binding Refresh}" IsRefreshing="{Binding IsRefreshing}">
-                <ListView.Behaviors>
-                    <bhv:EventToCommandBehavior 
-                        EventName="ItemTapped"
-                        Command="{Binding SelectNew}"
-                        CommandParameter="{Binding .}"
-                    />
-                </ListView.Behaviors>
+            <ListView ItemsSource="{Binding LocationList}" IsPullToRefreshEnabled="True" RefreshCommand="{Binding Refresh}" IsRefreshing="{Binding IsRefreshing}" SelectedItem="{Binding SelectedLocation, Mode=TwoWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
