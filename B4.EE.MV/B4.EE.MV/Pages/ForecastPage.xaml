@@ -16,14 +16,14 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout>
-                                <Label Text="{Binding Dt_txt}" />
+                                <Label Text="{Binding Dt_txt}" FontSize="Large" FontAttributes="Italic" />
 
                                 <Label Text="Temperature:" Style="{StaticResource title}"/>
                                 <Label Text="{Binding Main.Temp}"/>
 
                                 <Label Text="Weather:" Style="{StaticResource title}"/>
                                 <Label Text="{Binding Weather[0].Description}"/>
-                                <Image Source="{Binding Weather[0].ImageSource}" HeightRequest="50" WidthRequest="50" HorizontalOptions="Start"/>
+                                <Image Source="{Binding Weather[0].ImageSource}" Style="{StaticResource icon}"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
