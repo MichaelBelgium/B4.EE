@@ -2,6 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="B4.EE.MV.Pages.ForecastPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Refresh" Command="{Binding Refresh}" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Padding="5,0,0,0">
             <Label Text="Location:" Style="{StaticResource title}"/>
@@ -11,20 +14,30 @@
             <Label Text="{Binding CurrentResponse.City.Country}" />
 
             <Label Text="Forecast per 3 hours:" Style="{StaticResource title}"/>
-            <ListView ItemsSource="{Binding CurrentResponse.List}" RowHeight="200">
+            <ListView ItemsSource="{Binding CurrentResponse.List}" RowHeight="100">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout>
-                                <Label Text="{Binding Dt_txt}" FontSize="Large" FontAttributes="Italic" />
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
 
-                                <Label Text="Temperature:" Style="{StaticResource title}"/>
-                                <Label Text="{Binding Main.Temp}"/>
+                                <Label Text="{Binding Dt_txt}" Style="{StaticResource title}" Grid.Row="0" Grid.ColumnSpan="2" />
 
-                                <Label Text="Weather:" Style="{StaticResource title}"/>
-                                <Label Text="{Binding Weather[0].Description}"/>
-                                <Image Source="{Binding Weather[0].ImageSource}" Style="{StaticResource icon}"/>
-                            </StackLayout>
+                                <Label Text="Temperature:" Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Center"/>
+                                <Label Text="{Binding Main.Temp}" Grid.Row="1" Grid.Column="1" VerticalTextAlignment="Center"/>
+
+                                <Label Text="Weather:" Grid.Row="2" Grid.Column="0" VerticalTextAlignment="Center"/>
+                                <Label Text="{Binding Weather[0].Description}" Grid.Row="2" Grid.Column="1" VerticalTextAlignment="Center"/>
+                                <Image Source="{Binding Weather[0].ImageSource}"  Grid.Row="2" Grid.Column="1" HorizontalOptions="End" Style="{StaticResource icon}"/>
+                            </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
