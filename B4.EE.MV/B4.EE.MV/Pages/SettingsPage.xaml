@@ -6,11 +6,24 @@
         <ToolbarItem Text="Save" Command="{Binding SaveSettings}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Units" Style="{StaticResource title}" />
-            <Picker ItemsSource="{Binding UnitItems}" SelectedItem="{Binding SelectedUnit, Mode=TwoWay}"/>
-            <Label Text="Auto refresh pages:" Style="{StaticResource title}"/>
-            <Switch IsToggled="{Binding SelectedRefresh, Mode=TwoWay}" />
-        </StackLayout>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <Label Text="Settings" Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource title}"/>
+
+            <Label Text="Units" Grid.Row="1" Grid.Column="0"  VerticalTextAlignment="Center"/>
+            <Picker ItemsSource="{Binding UnitItems}" SelectedItem="{Binding SelectedUnit, Mode=TwoWay}" Grid.Row="1" Grid.Column="1"/>
+
+            <Label Text="Auto refresh pages:" Grid.Row="2" Grid.Column="0" VerticalTextAlignment="Center" />
+            <Switch IsToggled="{Binding SelectedRefresh, Mode=TwoWay}" Grid.Row="2" Grid.Column="1" />
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
