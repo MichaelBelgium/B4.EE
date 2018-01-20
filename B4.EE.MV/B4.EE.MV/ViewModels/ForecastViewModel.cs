@@ -30,7 +30,8 @@ namespace B4.EE.MV.ViewModels
 
         protected override void ViewIsAppearing(object sender, EventArgs e)
         {
-            Refresh.Execute(null);
+            if(Settings.AutoRefresh)
+                Refresh.Execute(null);
         }
     }
 }

@@ -16,9 +16,7 @@
                             <ViewCell.ContextActions>
                                 <MenuItem Command="{Binding Path=BindingContext.RemoveFavorite, Source={x:Reference FavoritesPage}}" CommandParameter="{Binding .}" Text="Delete" />
                             </ViewCell.ContextActions>
-                            <StackLayout>
-                                <Label Text="{Binding Name}" />
-                            </StackLayout>
+                            <Label Text="{Binding Name}" />
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

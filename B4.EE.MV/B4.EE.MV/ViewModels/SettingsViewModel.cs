@@ -14,9 +14,11 @@ namespace B4.EE.MV.ViewModels
             get { return new List<string> { Settings.UNIT_IMPERIAL, Settings.UNIT_METRIC, Settings.UNIT_STANDARD }; }
         }
         private string selectedUnit;
+        private bool selectedRefresh;
 
         public ICommand SaveSettings => new Command(async () => {
             Settings.Unit = SelectedUnit;
+            Settings.AutoRefresh = SelectedRefresh;
             await CoreMethods.DisplayAlert("Success", "Settings were saved.", "Ok");
             await CoreMethods.PopToRoot(false);
         });
@@ -27,9 +29,16 @@ namespace B4.EE.MV.ViewModels
             set { selectedUnit = value; RaisePropertyChanged(nameof(SelectedUnit)); }
         }
 
+        public bool SelectedRefresh
+        {
+            get { return selectedRefresh; }
+            set { selectedRefresh = value; RaisePropertyChanged(nameof(SelectedRefresh)); }
+        }
+
         protected override void ViewIsAppearing(object sender, EventArgs e)
         {
             SelectedUnit = Settings.Unit;
+            SelectedRefresh = Settings.AutoRefresh;
         }
     }
 }

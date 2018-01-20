@@ -12,5 +12,6 @@ namespace B4.EE.MV.Models.Database
 
         public static Location SelectedLocation { get; set; }
         public static string Unit { get; set; }
+        public static bool AutoRefresh { get; set; }
     }
 }
