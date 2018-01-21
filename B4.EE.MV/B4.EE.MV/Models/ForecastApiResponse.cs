@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RestSharp.Deserializers;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -9,24 +10,36 @@ namespace B4.EE.MV.Models
         /// <summary>
         /// List of forecasts
         /// </summary>
-        public List<Forecast> List { get; set; }
+        [DeserializeAs(Name = "List")]
+        public List<Forecast> Forecasts { get; set; }
         public City City { get; set; }
     }
 
     public class Forecast
     {
-        public DateTime Dt { get; set; }
-        public Temperature Main { get; set; }
-        public Clouds Clouds { get; set; }
-        public Wind Wind { get; set; }
+        [DeserializeAs(Name = "Dt")]
+        public DateTime ForecastDateTime { get; set; }
+
+        [DeserializeAs(Name = "Main")]
+        public TemperatureInfo TemperatureInfo { get; set; }
+
+        [DeserializeAs(Name = "Clouds")]
+        public Clouds CloudInfo { get; set; }
+
+        [DeserializeAs(Name = "Wind")]
+        public Wind WindInfo { get; set; }
         public string Dt_txt { get; set; }
-        public List<Weather> Weather { get; set; }
+
+        [DeserializeAs(Name = "Weather")]
+        public List<WeatherCondition> WeatherConditions { get; set; }
     }
 
     public class City
     {
         public string Name { get; set; }
-        public Position Coord { get; set; }
-        public string Country { get; set; }
+        [DeserializeAs(Name = "Coord")]
+        public Position Position { get; set; }
+        [DeserializeAs(Name = "Country")]
+        public string CountryCode { get; set; }
     }
 }
