@@ -47,6 +47,18 @@ namespace B4.EE.MV.Models
 
         [DeserializeAs(Name = "Deg")]
         public double Direction { get; set; }
+
+        public string SpeedString
+        {
+            get
+            {
+                switch(Settings.Unit)
+                {
+                    case Settings.UNIT_IMPERIAL: return $"{Speed} miles/hour";
+                    default: return $"{Speed} meter/sec";
+                }
+            }
+        }
     }
 
     public class Details

@@ -19,7 +19,7 @@
                 <Label Text="{Binding CurrentResponse.UpdatedAt}" />
 
                 <Label Text="Wind speed and degrees:" Style="{StaticResource title}" />
-                <Label Text="{Binding CurrentResponse.WindInfo.Speed}" />
+                <Label Text="{Binding CurrentResponse.WindInfo.SpeedString}" />
                 <Label Text="{Binding CurrentResponse.WindInfo.Direction}" />
 
                 <Label Text="Country code:" Style="{StaticResource title}" />
