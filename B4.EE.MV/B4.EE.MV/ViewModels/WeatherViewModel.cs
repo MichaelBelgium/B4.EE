@@ -16,7 +16,6 @@ namespace B4.EE.MV.ViewModels
         public override void Init(object initData)
         {
             service = new ApiService();
-            Refresh.Execute(null);
         }
 
         public ICommand Refresh => new Command(

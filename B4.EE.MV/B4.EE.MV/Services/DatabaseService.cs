@@ -20,12 +20,15 @@ namespace B4.EE.MV.Services
 
             conn.CreateTable<Location>();
 
+            //conn.Execute("DELETE FROM Location");
+
             if(conn.Table<Location>().Count() == 0)
                 conn.Insert(new Location { ApiId = 2800931, Name = "Bruges", Selected = true });
             
             SetSelectedLocation(GetSelectedLocation());
 
             Settings.Unit = Settings.UNIT_METRIC;
+            Settings.AutoRefresh = true;
         }
 
         public List<Location> GetLocations()
@@ -42,6 +45,9 @@ namespace B4.EE.MV.Services
         {
             if (conn.Table<Location>().Count() == 1)
                 throw new Exception("The app needs minimum 1 location.");
+
+            if (GetSelectedLocation().Id == id)
+                throw new Exception("Change your current selected location before removing");
 
             conn.Delete<Location>(id);
         }

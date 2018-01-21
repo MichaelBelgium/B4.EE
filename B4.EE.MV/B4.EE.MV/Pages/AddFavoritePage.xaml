@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="B4.EE.MV.Pages.AddFavoritePage">
     <ContentPage.Content>
-        <StackLayout Padding="5,0,0,0">
+        <StackLayout Padding="5,0,5,0">
             <Entry Placeholder="City" Text="{Binding City}" />
             <Label Text="{Binding ErrorMessage}" TextColor="Red" />
             <Button Text="Add city" Command="{Binding AddCity}"/>

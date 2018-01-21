@@ -128,7 +128,7 @@ namespace B4.EE.MV.Services
         {
             request.AddParameter("APPID", API_KEY);
             request.AddParameter("units", Settings.Unit);
-            request.AddParameter("lang", "nl");
+            //request.AddParameter("lang", "nl");
         }
     }
 }
