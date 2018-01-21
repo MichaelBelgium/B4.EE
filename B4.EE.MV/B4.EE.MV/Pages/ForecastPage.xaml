@@ -32,7 +32,7 @@
                                 <Label Text="{Binding Dt_txt}" Style="{StaticResource title}" Grid.Row="0" Grid.ColumnSpan="2" />
 
                                 <Label Text="Temperature:" Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Center"/>
-                                <Label Text="{Binding Main.Temp}" Grid.Row="1" Grid.Column="1" VerticalTextAlignment="Center"/>
+                                <Label Text="{Binding Main.TempString}" Grid.Row="1" Grid.Column="1" VerticalTextAlignment="Center"/>
 
                                 <Label Text="Weather:" Grid.Row="2" Grid.Column="0" VerticalTextAlignment="Center"/>
                                 <Label Text="{Binding Weather[0].Description}" Grid.Row="2" Grid.Column="1" VerticalTextAlignment="Center"/>

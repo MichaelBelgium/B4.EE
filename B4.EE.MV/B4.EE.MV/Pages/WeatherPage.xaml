@@ -38,7 +38,7 @@
                 <Image Source="{Binding CurrentResponse.Weather[0].ImageSource}" Style="{StaticResource icon}" HorizontalOptions="Start"/>
 
                 <Label Text="Current temperature:" Style="{StaticResource title}"/>
-                <Label Text="{Binding CurrentResponse.Main.Temp}" />
+                <Label Text="{Binding CurrentResponse.Main.TempString}" />
 
                 <Label Text="Current atmospheric pressure (hPa):" Style="{StaticResource title}" />
                 <Label Text="{Binding CurrentResponse.Main.Pressure}" />

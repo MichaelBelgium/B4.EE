@@ -1,4 +1,5 @@
-﻿using System;
+﻿using B4.EE.MV.Models.Database;
+using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
 
@@ -74,5 +75,19 @@ namespace B4.EE.MV.Models
         public int Humidity { get; set; }
         public int Temp_min { get; set; }
         public int Temp_max { get; set; }
+
+        public string TempString
+        {
+            get
+            {
+                string unit = string.Empty;
+                switch(Settings.Unit)
+                {
+                    case Settings.UNIT_METRIC: return $"{Temp} °C";
+                    case Settings.UNIT_IMPERIAL: return $"{Temp} °F";
+                    default: return $"{Temp} K";
+                }
+            }
+        }
     }
 }
