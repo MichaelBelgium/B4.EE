@@ -16,41 +16,41 @@
                 <Label Text="{Binding CurrentResponse.Name}" />
 
                 <Label Text="Last updated:" Style="{StaticResource title}" />
-                <Label Text="{Binding CurrentResponse.Dt}" />
+                <Label Text="{Binding CurrentResponse.UpdatedAt}" />
 
                 <Label Text="Wind speed and degrees:" Style="{StaticResource title}" />
-                <Label Text="{Binding CurrentResponse.Wind.Speed}" />
-                <Label Text="{Binding CurrentResponse.Wind.Deg}" />
+                <Label Text="{Binding CurrentResponse.WindInfo.Speed}" />
+                <Label Text="{Binding CurrentResponse.WindInfo.Direction}" />
 
                 <Label Text="Country code:" Style="{StaticResource title}" />
-                <Label Text="{Binding CurrentResponse.Sys.Country}" />
+                <Label Text="{Binding CurrentResponse.OtherInfo.CountryCode}" />
 
                 <Label Text="Sunrize:" Style="{StaticResource title}" />
-                <Label Text="{Binding CurrentResponse.Sys.Sunrise}" />
+                <Label Text="{Binding CurrentResponse.OtherInfo.SunriseAt}" />
 
                 <Label Text="Clouds (percentage): " Style="{StaticResource title}" />
-                <Label Text="{Binding CurrentResponse.Clouds.All}" />
+                <Label Text="{Binding CurrentResponse.CloudInfo.Percentage}" />
 
                 <Label Text="Weather:" Style="{StaticResource title}" />
 
-                <Label Text="{Binding CurrentResponse.Weather[0].Main}" />
-                <Label Text="{Binding CurrentResponse.Weather[0].Description}" />
-                <Image Source="{Binding CurrentResponse.Weather[0].ImageSource}" Style="{StaticResource icon}" HorizontalOptions="Start"/>
+                <Label Text="{Binding CurrentResponse.WeatherConditions[0].ConditionGroup}" />
+                <Label Text="{Binding CurrentResponse.WeatherConditions[0].ConditionDescription}" />
+                <Image Source="{Binding CurrentResponse.WeatherConditions[0].ImageSource}" Style="{StaticResource icon}" HorizontalOptions="Start"/>
 
                 <Label Text="Current temperature:" Style="{StaticResource title}"/>
-                <Label Text="{Binding CurrentResponse.Main.TempString}" />
+                <Label Text="{Binding CurrentResponse.TemperatureInfo.TempString}" />
 
                 <Label Text="Current atmospheric pressure (hPa):" Style="{StaticResource title}" />
-                <Label Text="{Binding CurrentResponse.Main.Pressure}" />
+                <Label Text="{Binding CurrentResponse.TemperatureInfo.Pressure}" />
 
                 <Label Text="Current humidity %:" Style="{StaticResource title}"/>
-                <Label Text="{Binding CurrentResponse.Main.Humidity}" />
+                <Label Text="{Binding CurrentResponse.TemperatureInfo.Humidity}" />
 
                 <Label Text="Minimum temperature:" Style="{StaticResource title}"/>
-                <Label Text="{Binding CurrentResponse.Main.Temp_min}" />
+                <Label Text="{Binding CurrentResponse.TemperatureInfo.MinTemperature}" />
 
                 <Label Text="Maximum temperature:" Style="{StaticResource title}"/>
-                <Label Text="{Binding CurrentResponse.Main.Temp_max}" />
+                <Label Text="{Binding CurrentResponse.TemperatureInfo.MaxTemperature}" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

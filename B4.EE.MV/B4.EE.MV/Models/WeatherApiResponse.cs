@@ -1,4 +1,5 @@
 ﻿using B4.EE.MV.Models.Database;
+using RestSharp.Deserializers;
 using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
@@ -9,57 +10,71 @@ namespace B4.EE.MV.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public Position Coord { get; set; }
-        public Wind Wind { get; set; }
-        public Details Sys { get; set; }
-        public Clouds Clouds { get; set; }
-        public List<Weather> Weather { get; set; }
-        public DateTime Dt { get; set; }
-        public Temperature Main { get; set; }
+
+        [DeserializeAs(Name = "Coord")]
+        public Position Position { get; set; }
+
+        [DeserializeAs(Name = "Wind")]
+        public Wind WindInfo { get; set; }
+
+        [DeserializeAs(Name = "Sys")]
+        public Details OtherInfo { get; set; }
+
+        [DeserializeAs(Name = "Clouds")]
+        public Clouds CloudInfo { get; set; }
+
+        [DeserializeAs(Name = "Weather")]
+        public List<WeatherCondition> WeatherConditions { get; set; }
+
+        [DeserializeAs(Name = "Dt")]
+        public DateTime UpdatedAt { get; set; }
+
+        [DeserializeAs(Name = "Main")]
+        public TemperatureInfo TemperatureInfo { get; set; }
     }
 
     public class Position
     {
-        public float Lon { get; set; }
-        public float Lat { get; set; }
+        [DeserializeAs(Name = "Lon")]
+        public float Longitude { get; set; }
+        [DeserializeAs(Name = "Lat")]
+        public float Latitude { get; set; }
     }
 
     public class Wind
     {
-        /// <summary>
-        /// Wind speed
-        /// </summary>
         public double Speed { get; set; }
-        /// <summary>
-        /// Wind direction (degrees)
-        /// </summary>
-        public double Deg { get; set; }
+
+        [DeserializeAs(Name = "Deg")]
+        public double Direction { get; set; }
     }
 
     public class Details
     {
-        public string Country { get; set; }
-        public DateTime Sunrise { get; set; }
+        [DeserializeAs(Name = "Country")]
+        public string CountryCode { get; set; }
+        [DeserializeAs(Name = "Sunrise")]
+        public DateTime SunriseAt { get; set; }
     }
 
     public class Clouds
     {
-        /// <summary>
-        /// Amount of clouds in percentage  
-        /// </summary>
-        public byte All { get; set; }
+        [DeserializeAs(Name = "All")]
+        public byte Percentage { get; set; }
     }
 
-    public class Weather
+    public class WeatherCondition
     {
         /// <summary>
         /// Group of weather parameters
         /// </summary>
-        public string Main { get; set; }
+        [DeserializeAs(Name = "Main")]
+        public string ConditionGroup { get; set; }
         /// <summary>
         /// Weather condition within the group
         /// </summary>
-        public string Description { get; set; }
+        [DeserializeAs(Name = "Description")]
+        public string ConditionDescription { get; set; }
         /// <summary>
         /// Weather icon id
         /// </summary>
@@ -68,13 +83,18 @@ namespace B4.EE.MV.Models
         public ImageSource ImageSource => ImageSource.FromUri(new Uri($"http://openweathermap.org/img/w/{Icon}.png"));
     }
 
-    public class Temperature
+    public class TemperatureInfo
     {
-        public int Temp { get; set; }
+        [DeserializeAs(Name = "Temp")]
+        public int Temperature { get; set; }
         public int Pressure { get; set; }
         public int Humidity { get; set; }
-        public int Temp_min { get; set; }
-        public int Temp_max { get; set; }
+
+        [DeserializeAs(Name = "Temp_min")]
+        public int MinTemperature { get; set; }
+
+        [DeserializeAs(Name = "Temp_max")]
+        public int MaxTemperature { get; set; }
 
         public string TempString
         {
@@ -83,9 +103,9 @@ namespace B4.EE.MV.Models
                 string unit = string.Empty;
                 switch(Settings.Unit)
                 {
-                    case Settings.UNIT_METRIC: return $"{Temp} °C";
-                    case Settings.UNIT_IMPERIAL: return $"{Temp} °F";
-                    default: return $"{Temp} K";
+                    case Settings.UNIT_METRIC: return $"{Temperature} °C";
+                    case Settings.UNIT_IMPERIAL: return $"{Temperature} °F";
+                    default: return $"{Temperature} K";
                 }
             }
         }
